@@ -42,5 +42,20 @@ PRODUCT_COPY_FILES += \
 TARGET_SCREEN_HEIGHT := 1920
 TARGET_SCREEN_WIDTH := 1200
 
+# Ramdisk
+PRODUCT_PACKAGES += \
+    fstab.hi3635 \
+    init.hi3635.chip.usb.rc \
+    init.hi3635.connectivity.rc \
+    init.hi3635.gps.rc \
+    init.hi3635.power.rc \
+    init.hi3635.rc \
+    init.hi3635.usb.rc \
+    ueventd.hi3635.rc
+
+PRODUCT_PACKAGES += \
+    oeminfo_nvm_server \
+    teecd
+
 ## Inherit vendor blobs
 $(call inherit-product, vendor/huawei/mozart/mozart-vendor.mk)
