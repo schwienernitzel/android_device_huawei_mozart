@@ -1,6 +1,6 @@
 #!/bin/bash
 
-ROM=cm
+ROM=lineage
 CLEAR=${2}
 THISDIR=$PWD
 TOPDIR="$THISDIR/../../../../"
