@@ -131,6 +131,9 @@ TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/fstab.hi3635
 BOARD_SEPOLICY_DIRS += \
 	device/huawei/mozart/sepolicy
 
+# Shims
+TARGET_LD_SHIM_LIBS := /system/bin/thermal-daemon|libshim_print.so:/system/lib64/libsensorservice.so|libshim_print.so
+
 # Wi-Fi
 TARGET_USES_64_BIT_BCMDHD	 := true
 BOARD_WLAN_DEVICE                := bcmdhd
