@@ -161,8 +161,46 @@ PRODUCT_PACKAGES += \
     libshim_gui \
     libshim_print
 
+# Treble
+PRODUCT_PACKAGES += \
+    android.hardware.vibrator@1.0-impl \
+    android.hardware.vibrator@1.0-service \
+    android.hardware.power@1.0-impl \
+    android.hardware.power@1.0-service \
+    android.hardware.drm@1.0-impl \
+    android.hardware.drm@1.0-service \
+    android.hardware.bluetooth@1.0-impl \
+    android.hardware.bluetooth@1.0-service \
+    android.hardware.camera.provider@2.4-impl \
+    android.hardware.camera.provider@2.4-service \
+    camera.device@3.2-impl \
+    android.hardware.keymaster@3.0-impl \
+    android.hardware.keymaster@3.0-service \
+    android.hardware.usb@1.0-service \
+    android.hardware.light@2.0-impl \
+    android.hardware.light@2.0-service \
+    android.hardware.audio@2.0-impl \
+    android.hardware.audio@2.0-service \
+    android.hardware.audio.effect@2.0-impl \
+    android.hardware.graphics.allocator@2.0-impl \
+    android.hardware.graphics.allocator@2.0-service \
+    android.hardware.graphics.composer@2.1-impl \
+    android.hardware.graphics.mapper@2.0-impl \
+    android.hardware.memtrack@1.0-impl \
+    android.hardware.memtrack@1.0-service \
+    android.hardware.configstore@1.0-service \
+    android.hardware.renderscript@1.0-impl \
+    android.hardware.health@1.0-impl \
+    android.hardware.health@1.0-service \
+    android.hardware.wifi@1.0-service \
+    android.hardware.broadcastradio@1.0-impl
+
 # USB
 PRODUCT_PACKAGES += \
     com.android.future.usb.accessory
+
+# VNDK
+PRODUCT_PACKAGES += \
+    vndk-sp
 
 $(call inherit-product, frameworks/native/build/phone-xxhdpi-3072-dalvik-heap.mk)
