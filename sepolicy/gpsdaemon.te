@@ -1,5 +1,5 @@
 # gpsdaemon daemon
-type gpsdaemon, domain, domain_deprecated;
+type gpsdaemon, domain;
 type gpsdaemon_exec, exec_type, file_type;
 
 # Started by init

@@ -1,5 +1,5 @@
 # oeminfo_nvm daemon
-type oeminfo_nvm, domain, domain_deprecated;
+type oeminfo_nvm, domain;
 type oeminfo_nvm_exec, exec_type, file_type;
 
 # Started by init

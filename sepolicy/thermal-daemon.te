@@ -1,5 +1,5 @@
 # thermal-daemon daemon
-type thermal-daemon, domain, domain_deprecated;
+type thermal-daemon, domain;
 type thermal-daemon_exec, exec_type, file_type;
 
 # Started by init
