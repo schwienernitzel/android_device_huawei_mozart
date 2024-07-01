@@ -1,0 +1,35 @@
+From 1e13d2958db1ccb3e656a52f1d2db23fdeb2b6bc Mon Sep 17 00:00:00 2001
+From: Meticulus <theonejohnnyd@gmail.com>
+Date: Sat, 3 Feb 2018 08:11:30 -0600
+Subject: [PATCH] "0001-init-reboot-recovery-not-bootloader
+ _______________________________
+
+*Previous From 5271586f1301eeb63b8e684168efc66d89221a94 Mon Sep 17 00:00:00 2001
+*Previous From: Meticulus <theonejohnnyd@gmail.com>
+*Previous Date: Sun, 17 Dec 2017 05:04:31 -0600
+*Previous Subject: [PATCH] init: reboot recovery not bootloader
+*"
+
+Change-Id: I1879c63d4ddb2bf1a23386efffe29c40fcfdefaf
+---
+ init/util.cpp | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/init/util.cpp b/init/util.cpp
+index fdcb22d..42e0880 100644
+--- a/init/util.cpp
++++ b/init/util.cpp
+@@ -371,9 +371,9 @@ bool expand_props(const std::string& src, std::string* dst) {
+ }
+ 
+ void panic() {
+-    LOG(ERROR) << "panic: rebooting to bootloader";
++    LOG(ERROR) << "panic: rebooting to recovery";
+     // Do not queue "shutdown" trigger since we want to shutdown immediately
+-    DoReboot(ANDROID_RB_RESTART2, "reboot", "bootloader", false);
++    DoReboot(ANDROID_RB_RESTART2, "reboot", "recovery", false);
+ }
+ 
+ static std::string init_android_dt_dir() {
+-- 
+2.7.4
