@@ -17,3 +17,7 @@
 int __android_logPower_print() {
     return 0;
 }
+
+int __android_janklog_print() {
+    return 0;
+}

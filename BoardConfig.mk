@@ -132,7 +132,7 @@ BOARD_SEPOLICY_DIRS += \
 	device/huawei/mozart/sepolicy
 
 # Shims
-TARGET_LD_SHIM_LIBS := /system/bin/thermal-daemon|libshim_print.so:/system/lib64/libsensorservice.so|libshim_print.so
+TARGET_LD_SHIM_LIBS := /system/bin/thermal-daemon|libshim_print.so:/system/lib64/libsensorservice.so|libshim_print.so:/system/lib64/hw/sensorhub.default.so|libshim_print.so
 
 # Wi-Fi
 TARGET_USES_64_BIT_BCMDHD	 := true
