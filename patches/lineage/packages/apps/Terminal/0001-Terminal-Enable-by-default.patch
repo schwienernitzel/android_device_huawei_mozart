@@ -1,0 +1,26 @@
+From 6f381a382f6f2eec6473285c3cb7069521c730de Mon Sep 17 00:00:00 2001
+From: schwienernitzel <pfelix0803@gmail.com>
+Date: Mon, 1 Jul 2024 10:52:13 +0000
+Subject: [PATCH] Terminal: Enable by default
+
+Change-Id: I323cc9260e10ad5a34e0f179df736519cb9ec809
+---
+ AndroidManifest.xml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/AndroidManifest.xml b/AndroidManifest.xml
+index 9005b89..c7dd776 100644
+--- a/AndroidManifest.xml
++++ b/AndroidManifest.xml
+@@ -32,7 +32,7 @@
+         android:icon="@mipmap/ic_launcher"
+         android:label="@string/app_label"
+         android:appCategory="productivity"
+-        android:enabled="false">
++        android:enabled="true">
+ 
+         <activity
+             android:name=".TerminalActivity"
+-- 
+2.25.1
+
