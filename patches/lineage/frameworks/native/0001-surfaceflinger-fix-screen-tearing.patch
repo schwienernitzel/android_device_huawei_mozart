@@ -1,0 +1,70 @@
+From 6ed22924917a6412230254bafba427972bd8e12e Mon Sep 17 00:00:00 2001
+From: Meticulus <theonejohnnyd@gmail.com>
+Date: Mon, 18 Dec 2017 14:04:24 -0600
+Subject: [PATCH] surfaceflinger: fix screen tearing.
+
+---
+ services/surfaceflinger/DisplayDevice.cpp                      | 3 +--
+ services/surfaceflinger/DisplayHardware/FramebufferSurface.cpp | 3 +--
+ services/surfaceflinger/SurfaceFlinger.cpp                     | 3 +--
+ services/surfaceflinger/SurfaceFlinger_hwc1.cpp                | 3 +--
+ 4 files changed, 4 insertions(+), 8 deletions(-)
+
+diff --git a/services/surfaceflinger/DisplayDevice.cpp b/services/surfaceflinger/DisplayDevice.cpp
+index 439c8db..5c819a5 100644
+--- a/services/surfaceflinger/DisplayDevice.cpp
++++ b/services/surfaceflinger/DisplayDevice.cpp
+@@ -64,8 +64,7 @@ static constexpr bool kEGLAndroidSwapRectangle = false;
+ using namespace android::hardware::configstore;
+ using namespace android::hardware::configstore::V1_0;
+ 
+-static bool useTripleFramebuffer = getInt64< ISurfaceFlingerConfigs,
+-        &ISurfaceFlingerConfigs::maxFrameBufferAcquiredBuffers>(2) == 3;
++static bool useTripleFramebuffer = true;
+ 
+ #if !defined(EGL_EGLEXT_PROTOTYPES) || !defined(EGL_ANDROID_swap_rectangle)
+ // Dummy implementation in case it is missing.
+diff --git a/services/surfaceflinger/DisplayHardware/FramebufferSurface.cpp b/services/surfaceflinger/DisplayHardware/FramebufferSurface.cpp
+index 5b869e1..69b8e50 100644
+--- a/services/surfaceflinger/DisplayHardware/FramebufferSurface.cpp
++++ b/services/surfaceflinger/DisplayHardware/FramebufferSurface.cpp
+@@ -84,8 +84,7 @@ FramebufferSurface::FramebufferSurface(HWComposer& hwc, int disp,
+     mConsumer->setDefaultBufferFormat(mHwc.getFormat(disp));
+     mConsumer->setDefaultBufferSize(mHwc.getWidth(disp), mHwc.getHeight(disp));
+ #endif
+-    mConsumer->setMaxAcquiredBufferCount(
+-            SurfaceFlinger::maxFrameBufferAcquiredBuffers - 1);
++    mConsumer->setMaxAcquiredBufferCount(3);
+ }
+ 
+ status_t FramebufferSurface::beginFrame(bool /*mustRecompose*/) {
+diff --git a/services/surfaceflinger/SurfaceFlinger.cpp b/services/surfaceflinger/SurfaceFlinger.cpp
+index 3d540ea..78ed82e 100644
+--- a/services/surfaceflinger/SurfaceFlinger.cpp
++++ b/services/surfaceflinger/SurfaceFlinger.cpp
+@@ -189,8 +189,7 @@ SurfaceFlinger::SurfaceFlinger()
+     useVrFlinger = getBool< ISurfaceFlingerConfigs,
+             &ISurfaceFlingerConfigs::useVrFlinger>(false);
+ 
+-    maxFrameBufferAcquiredBuffers = getInt64< ISurfaceFlingerConfigs,
+-            &ISurfaceFlingerConfigs::maxFrameBufferAcquiredBuffers>(2);
++    maxFrameBufferAcquiredBuffers = 3;
+ 
+     hasWideColorDisplay =
+             getBool<ISurfaceFlingerConfigs, &ISurfaceFlingerConfigs::hasWideColorDisplay>(false);
+diff --git a/services/surfaceflinger/SurfaceFlinger_hwc1.cpp b/services/surfaceflinger/SurfaceFlinger_hwc1.cpp
+index 052c7aa..ed1f1ab 100644
+--- a/services/surfaceflinger/SurfaceFlinger_hwc1.cpp
++++ b/services/surfaceflinger/SurfaceFlinger_hwc1.cpp
+@@ -177,8 +177,7 @@ SurfaceFlinger::SurfaceFlinger()
+     useHwcForRgbToYuv = getBool< ISurfaceFlingerConfigs,
+             &ISurfaceFlingerConfigs::useHwcForRGBtoYUV>(false);
+ 
+-    maxFrameBufferAcquiredBuffers = getInt64< ISurfaceFlingerConfigs,
+-            &ISurfaceFlingerConfigs::maxFrameBufferAcquiredBuffers>(2);
++    maxFrameBufferAcquiredBuffers = 3;
+ 
+     mPrimaryDispSync.init(hasSyncFramework, dispSyncPresentTimeOffset);
+ 
+-- 
+2.7.4
