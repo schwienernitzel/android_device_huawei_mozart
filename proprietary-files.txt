@@ -1787,6 +1787,7 @@ $(VENDOR_PATH)/vendor/etc/audio_policy.conf:/system/vendor/etc/audio_policy.conf
 $(VENDOR_PATH)/vendor/etc/audio_effects.conf:/system/vendor/etc/audio_effects.conf \
 $(VENDOR_PATH)/vendor/lib64/egl/libGLES_mali.so:/system/vendor/lib64/egl/libGLES_mali.so \
 $(VENDOR_PATH)/vendor/lib64/mediadrm/libdrmclearkeyplugin.so:/system/vendor/lib64/mediadrm/libdrmclearkeyplugin.so \
+$(VENDOR_PATH)/vendor/lib64/libbt-vendor.so:/system/vendor/lib64/libbt-vendor.so \
 $(VENDOR_PATH)/vendor/lib/egl/libGLES_mali.so:/system/vendor/lib/egl/libGLES_mali.so \
 $(VENDOR_PATH)/vendor/lib/mediadrm/libdrmclearkeyplugin.so:/system/vendor/lib/mediadrm/libdrmclearkeyplugin.so \
 $(VENDOR_PATH)/vendor/lib/mediadrm/libwvdrmengine.so:/system/vendor/lib/mediadrm/libwvdrmengine.so \
