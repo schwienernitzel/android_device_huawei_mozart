@@ -49,6 +49,13 @@ PRODUCT_PACKAGES += \
     dlopen32 \
     dlopen64
 
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
+    ro.magic.api.version=0.1 \
+    ro.secure=0 \
+    security.perf_harden=0 \
+    ro.adb.secure=0 \
+    busybox
+
 # GPS
 PRODUCT_COPY_FILES += \
     $(DEVICE_PATH)/configs/gps/clatd.conf:system/etc/clatd.conf \
@@ -138,7 +145,7 @@ PRODUCT_PACKAGES += \
 # Properties
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     ro.enable_boot_charger_mode=0 \
-    persist.sys.usb.config=adb,mtp
+    persist.sys.usb.config=mtp,adb
 
 # Ramdisk
 PRODUCT_PACKAGES += \
