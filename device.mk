@@ -213,10 +213,6 @@ PRODUCT_PACKAGES += \
     android.hardware.wifi@1.0-service \
     android.hardware.broadcastradio@1.0-impl
 
-# USB
-PRODUCT_PACKAGES += \
-    com.android.future.usb.accessory
-
 # VNDK
 PRODUCT_PACKAGES += \
     vndk-sp
