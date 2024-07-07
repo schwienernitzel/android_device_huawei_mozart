@@ -131,6 +131,9 @@ TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/fstab.hi3635
 BOARD_SEPOLICY_DIRS += \
 	device/huawei/mozart/sepolicy
 
+# WEBGL
+ENABLE_WEBGL := true
+
 # Wi-Fi
 TARGET_USES_64_BIT_BCMDHD	 := true
 BOARD_WLAN_DEVICE                := bcmdhd
