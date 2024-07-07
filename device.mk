@@ -211,7 +211,10 @@ PRODUCT_PACKAGES += \
     android.hardware.health@1.0-impl \
     android.hardware.health@1.0-service \
     android.hardware.wifi@1.0-service \
-    android.hardware.broadcastradio@1.0-impl
+    android.hardware.broadcastradio@1.0-impl \
+    android.system.net.netd@1.0 \
+    android.hardware.broadcastradio@1.0-impl \
+    android.hardware.tetheroffload.config@1.0
 
 # VNDK
 PRODUCT_PACKAGES += \
