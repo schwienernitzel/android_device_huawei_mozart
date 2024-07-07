@@ -244,4 +244,17 @@
          This can be overridden to false for "data only" devices
          which can't send and receive sms message. -->
     <bool name="config_sms_capable">false</bool>
+
+    <!-- The duration (in milliseconds) of a short animation. -->
+    <integer name="config_shortAnimTime">20</integer>
+
+    <!-- The duration (in milliseconds) of a medium-length animation. -->
+    <integer name="config_mediumAnimTime">40</integer>
+
+    <!-- The duration (in milliseconds) of a long animation. -->
+    <integer name="config_longAnimTime">50</integer>
+
+    <!-- The duration (in milliseconds) of the activity open/close and fragment open/close animations. -->
+    <integer name="config_activityShortDur">15</integer>
+    <integer name="config_activityDefaultDur">22</integer>
 </resources>
