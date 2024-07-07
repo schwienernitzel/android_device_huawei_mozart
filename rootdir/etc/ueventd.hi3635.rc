@@ -63,4 +63,7 @@
 /dev/ear_pa					0660 media media
 /dev/tfa9895					0660 media media
 
+/dev/drv2605		                        0660 system system
+/dev/hwlog_tag		                        0660 system system
+
 /dev/nve0					0770 root system

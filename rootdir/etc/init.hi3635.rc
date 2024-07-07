@@ -41,6 +41,8 @@ on early-init
     chmod 0222 /sys/kernel/debug/tracing/trace_marker
     chmod 0222 /sys/kernel/tracing/trace_marker
 
+    chmod 0666 /proc/apanic_console
+
 on init
     mkdir /cust
     mkdir /splash2
@@ -75,30 +77,14 @@ on init
     chown root system /dev/nve0
     chmod 0770 /dev/nve0
 
-    mkdir /dev/frz
-    mount cgroup none /dev/frz freezer
-
     chown root log /dev/hwlog_exception
     chmod 0666 /dev/hwlog_exception
-    chown root root /dev/hwlog_jank
-    chmod 0662 /dev/hwlog_jank
     chown logd system /dev/hwlog_switch
     chmod 0660 /dev/hwlog_switch
-    chown system system /dev/hwlog_tag
-    chmod 0660 /dev/hwlog_tag
 
-    mkdir /sys/fs/cgroup/pids 0750 root system
-    mount cgroup none /sys/fs/cgroup/pids pids
-    mkdir /sys/fs/cgroup/pids/unconfirm_app 0750 root system
-    chown root system /sys/fs/cgroup/pids/unconfirm_app/cgroup.procs
-    chmod 0660 /sys/fs/cgroup/pids/unconfirm_app/cgroup.procs
-    chown root system /sys/fs/cgroup/pids/unconfirm_app/tasks
-    chmod 0660 /sys/fs/cgroup/pids/unconfirm_app/tasks
-    chown root system /sys/fs/cgroup/pids/unconfirm_app/pids.group_limit
-    chmod 0660 /sys/fs/cgroup/pids/unconfirm_app/pids.group_limit
-    chown root system /sys/fs/cgroup/pids/unconfirm_app/cgroup.event_control
-    chmod 0220 /sys/fs/cgroup/pids/unconfirm_app/cgroup.event_control
-    chmod 0220 /sys/fs/cgroup/pids/cgroup.event_control
+    chmod 0660 /dev/hwlog_tag
+    chown system system /dev/hwlog_tag
+    chmod 0662 /dev/hwlog_jank
 
     chown system system /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
     chmod 664 /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
@@ -344,10 +330,8 @@ on fs
     restorecon /sys/class/graphics/fb0/amoled_pcd_errflag_check
     restorecon /sys/class/graphics/fb0/amoled_acl
     restorecon /sys/class/graphics/fb0/amoled_hbm
-    restorecon /sys/kernel/set_hmp_thresholds/policy
     restorecon /sys/class/graphics/fb0/lcd_cabc_mode
     restorecon /sys/devices/system/cpu/cpu0/cpufreq/scaling_available_frequencies
-    restorecon /sys/devices/system/cpu/cpu4/cpufreq/scaling_available_frequencies
     restorecon /sys/devices/ddrfreq/devfreq/ddrfreq/min_freq
     restorecon /sys/devices/ddrfreq/devfreq/ddrfreq/max_freq
     restorecon /sys/devices/ddrfreq/devfreq/ddrfreq/available_frequencies
@@ -584,6 +568,12 @@ on boot
     chown system system /sys/devices/platform/antennafpga.0/ice40bin_scan_fpga_table
 
     write /sys/kernel/debug/kmemleak scan=14400
+
+    chown root radio /proc/cmdline
+    chmod 0644 /proc/cmdline
+
+    chown root system /dev/socket
+    chmod 0775 /dev/socket
 
     chown system system /sys/class/leds/lcd_backlight0/brightness
     chmod 644 /sys/class/leds/lcd_backlight0/brightness
