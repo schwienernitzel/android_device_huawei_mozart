@@ -18,6 +18,7 @@ media.stagefright.use-awesome=false
 # Performance
 ro.am.reschedule_service=true
 ro.config.enable_rcc=true
+debug.sf.latch_unsignaled=1
 
 # RIL
 ro.radio.noril=true
