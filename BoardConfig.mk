@@ -64,13 +64,7 @@ BOARD_BLUEDROID_VENDOR_CONF := $(DEVICE_PATH)/configs/bluetooth/libbt_vndcfg.txt
 BOARD_HARDWARE_CLASS := $(DEVICE_PATH)/colors
 
 # Dex
-ifeq ($(HOST_OS),linux)
-  ifneq ($(TARGET_BUILD_VARIANT),eng)
-    ifeq ($(WITH_DEXPREOPT),)
-      WITH_DEXPREOPT := true
-    endif
-  endif
-endif
+WITH_DEXPREOPT := true
 
 # Display
 USE_OPENGL_RENDERER := true
