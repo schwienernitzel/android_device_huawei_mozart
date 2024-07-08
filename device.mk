@@ -44,6 +44,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(DEVICE_PATH)/configs/bluetooth/bt_vendor.conf:system/etc/bluetooth/bt_vendor.conf
 
+# Camera
+PRODUCT_PACKAGES += \
+    Snap
+
 # Debug
 PRODUCT_PACKAGES += \
     dlopen32 \
