@@ -1,6 +1,10 @@
 # Audio
 ro.config.hw_dts=false
 
+# ART
+dalvik.vm.dex2oat-swap=false
+ro.am.reschedule_service=true
+
 # Bluetooth
 ro.bt.bdaddr_path=/data/misc/bluedroid/macbt
 
