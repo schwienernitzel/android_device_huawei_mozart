@@ -53,6 +53,10 @@ PRODUCT_PACKAGES += \
     dlopen32 \
     dlopen64
 
+# Doze
+PRODUCT_PACKAGES += \
+    HisiDoze
+
 # GPS
 PRODUCT_COPY_FILES += \
     $(DEVICE_PATH)/configs/gps/clatd.conf:system/etc/clatd.conf \
