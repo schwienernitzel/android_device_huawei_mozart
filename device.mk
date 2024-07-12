@@ -175,7 +175,8 @@ TARGET_SCREEN_WIDTH := 1200
 PRODUCT_PACKAGES += \
     libshim_icu \
     libshim_gui \
-    libshim_camera
+    libshim_camera \
+    libshim_thermal
 
 # USB
 PRODUCT_PACKAGES += \
