@@ -12,6 +12,13 @@ ro.am.reschedule_service=true
 # Bluetooth
 ro.bt.bdaddr_path=/data/misc/bluedroid/macbt
 
+# Camera
+ro.camera.beauty.algo.doc=1
+ro.hwcamera.use.videosize.1080p=true
+ro.hwcamera.previeweffects=true
+ro.camera.config.burstcount=10
+persist.camera.cpp.duplication=false
+
 # CPU
 ro.hardware.alter=Hisilicon Kirin 930
 
