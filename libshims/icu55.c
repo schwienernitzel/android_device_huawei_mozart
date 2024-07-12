@@ -15,6 +15,26 @@
  */
 
 #include "unicode/ucnv.h"
+#include <tinyalsa/asoundlib.h>
+
+void pop_seq_init(void) {
+    // This is supposed to initialize whatever
+    // g_pst_cfg is by using memset(). We don't
+    // support this so stub out the function.
+    return;
+}
+
+char *pop_seq_set(struct mixer *mixer, char *path) {
+    // We don't support this either so stub out
+    // the function, too (respecting the params).
+    return (char *)0x0;
+}
+
+int force_flush_set(struct mixer *mixer, char* state, char *p) {
+    // We don't support this either so stub out
+    // the function, too (respecting the params).
+    return 0;
+}
 
 U_STABLE UConverter* U_EXPORT2
 ucnv_open_55(const char *converterName, UErrorCode *err)
