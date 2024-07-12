@@ -48,6 +48,15 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     Snap
 
+PRODUCT_PROPERTY_OVERRIDES += \
+    media.stagefright.legacyencoder=true \
+    media.stagefright.less-secure=true
+
+PRODUCT_COPY_FILES += \
+    $(DEVICE_PATH)/configs/camera/camera_orientation.cfg:system/etc/camera_orientation.cfg \
+    $(DEVICE_PATH)/configs/camera/camera_resolutions.cfg:system/etc/camera_resolutions.cfg \
+    $(DEVICE_PATH)/configs/camera/camera_videosnapshot.cfg:system/etc/camera_videosnapshot.cfg
+
 # Debug
 PRODUCT_PACKAGES += \
     dlopen32 \
