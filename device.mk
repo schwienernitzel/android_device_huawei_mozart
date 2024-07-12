@@ -29,6 +29,7 @@ PRODUCT_PACKAGES += \
     audio.usb.default \
     audio.r_submix.default \
     libaudioutils \
+    libaudioroute \
     libtinyalsa \
     tinyplay \
     tinycap \
