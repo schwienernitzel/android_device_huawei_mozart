@@ -69,10 +69,6 @@ PRODUCT_COPY_FILES += \
     $(DEVICE_PATH)/configs/gps/gps47531config.xml:system/etc/gps47531config.xml \
     $(DEVICE_PATH)/configs/gps/gps47531config_beta.xml:system/etc/gps47531config_beta.xml
 
-# Graphics
-PRODUCT_PACKAGES += \
-    libGLES_android
-
 # Media
 PRODUCT_PACKAGES += \
     libprotobuf-cpp-full \
