@@ -73,10 +73,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     libGLES_android
 
-# Hardware Composer
-PRODUCT_PACKAGES += \
-    hwcomposer.hi3635
-
 # Media
 PRODUCT_PACKAGES += \
     libprotobuf-cpp-full \
@@ -158,10 +154,6 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.opengles.aep.xml:system/etc/permissions/android.hardware.opengles.aep.xml \
     frameworks/native/data/etc/android.software.app_widgets.xml:system/etc/permissions/android.software.app_widgets.xml \
     frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml
-
-# Power
-PRODUCT_PACKAGES += \
-    power.hi3635
 
 # Properties
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
