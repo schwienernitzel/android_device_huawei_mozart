@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2024 The LineageOS Project
+ * Copyright (C) 2017 The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,9 +14,8 @@
  * limitations under the License.
  */
 
-#include <gui/SensorManager.h>
-
-extern "C" int _ZNK7android13SensorManager13getSensorListEPPKPKNS_6SensorE(void* obj, android::Sensor const* const** list) {
-    android::SensorManager* sm = static_cast<android::SensorManager*>(obj);
-    return sm->getSensorList(list);
+#include <string>
+#define ANDROID_ATOMIC_INLINE
+extern "C" {
+#include <cutils/atomic.h>
 }

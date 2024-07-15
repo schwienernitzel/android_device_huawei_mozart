@@ -25,11 +25,16 @@ LOCAL_MODULE_CLASS := SHARED_LIBRARIES
 include $(BUILD_SHARED_LIBRARY)
 
 include $(CLEAR_VARS)
-LOCAL_SRC_FILES := gui.cpp
-LOCAL_SHARED_LIBRARIES := libgui
+LOCAL_SRC_FILES := \
+    gui/SensorManager.cpp \
+    ui/GraphicBufferAllocator.cpp \
+    ui/GraphicBuffer.cpp \
+    ui/GraphicBufferMapper.cpp \
+    atomic.cpp
+LOCAL_SHARED_LIBRARIES := liblog libcutils libhardware libui libgui libbinder libsensor libutils libsync
 LOCAL_MODULE := libshim_gui
+LOCAL_MULTILIB := 32
 LOCAL_MODULE_TAGS := optional
-LOCAL_MULTILIB := both
 LOCAL_MODULE_CLASS := SHARED_LIBRARIES
 include $(BUILD_SHARED_LIBRARY)
 
