@@ -1,0 +1,123 @@
+From e9767969e3a6f8419e90a5a5be26f8fb8f8726f1 Mon Sep 17 00:00:00 2001
+From: schwienernitzel <pfelix0803@gmail.com>
+Date: Mon, 15 Jul 2024 08:41:57 +0000
+Subject: [PATCH] Remove assert to make it TWRP compatible
+
+Change-Id: I1bb590e277af4db1e5e62cc40854b6f84dd03061
+---
+ tools/releasetools/edify_generator.py       | 18 ++++----
+ tools/releasetools/ota_from_target_files.py | 48 ++++++++++-----------
+ 2 files changed, 33 insertions(+), 33 deletions(-)
+
+diff --git a/tools/releasetools/edify_generator.py b/tools/releasetools/edify_generator.py
+index 2ddb5cf3f..96c6913a6 100644
+--- a/tools/releasetools/edify_generator.py
++++ b/tools/releasetools/edify_generator.py
+@@ -143,15 +143,15 @@ class EdifyGenerator(object):
+          'build (" + getprop("ro.build.date") + ").");') % (timestamp,
+              common.ErrorCode.OLDER_BUILD, timestamp_text))
+ 
+-  def AssertDevice(self, device):
+-    """Assert that the device identifier is the given string."""
+-    cmd = ('assert(' +
+-           ' || \0'.join(['getprop("ro.product.device") == "%s" || getprop("ro.build.product") == "%s"'
+-                         % (i, i) for i in device.split(",")]) +
+-           ' || abort("E%d: This package is for device: %s; ' +
+-           'this device is " + getprop("ro.product.device") + ".");' +
+-           ');') % (common.ErrorCode.DEVICE_MISMATCH, device)
+-    self.script.append(self.WordWrap(cmd))
++#  def AssertDevice(self, device):
++#    """Assert that the device identifier is the given string."""
++#    cmd = ('assert(' +
++#           ' || \0'.join(['getprop("ro.product.device") == "%s" || getprop("ro.build.product") == "%s"'
++#                         % (i, i) for i in device.split(",")]) +
++#           ' || abort("E%d: This package is for device: %s; ' +
++#           'this device is " + getprop("ro.product.device") + ".");' +
++#           ');') % (common.ErrorCode.DEVICE_MISMATCH, device)
++#    self.script.append(self.WordWrap(cmd))
+ 
+   def AssertSomeBootloader(self, *bootloaders):
+     """Assert that the bootloader version is one of *bootloaders."""
+diff --git a/tools/releasetools/ota_from_target_files.py b/tools/releasetools/ota_from_target_files.py
+index e6931c3f2..63b6fae2d 100755
+--- a/tools/releasetools/ota_from_target_files.py
++++ b/tools/releasetools/ota_from_target_files.py
+@@ -203,27 +203,27 @@ def SignOutput(temp_zip_name, output_zip_name):
+                   whole_file=True)
+ 
+ 
+-def AppendAssertions(script, info_dict, oem_dicts=None):
+-  oem_props = info_dict.get("oem_fingerprint_properties")
+-  if not oem_props:
+-    if OPTIONS.override_device == "auto":
+-      device = GetBuildProp("ro.product.device", info_dict)
+-    else:
+-      device = OPTIONS.override_device
+-    script.AssertDevice(device)
+-  else:
+-    if not oem_dicts:
+-      raise common.ExternalError(
+-          "No OEM file provided to answer expected assertions")
+-    for prop in oem_props.split():
+-      values = []
+-      for oem_dict in oem_dicts:
+-        if oem_dict.get(prop):
+-          values.append(oem_dict[prop])
+-      if not values:
+-        raise common.ExternalError(
+-            "The OEM file is missing the property %s" % prop)
+-      script.AssertOemProperty(prop, values)
++#def AppendAssertions(script, info_dict, oem_dicts=None):
++#  oem_props = info_dict.get("oem_fingerprint_properties")
++#  if not oem_props:
++#    if OPTIONS.override_device == "auto":
++#      device = GetBuildProp("ro.product.device", info_dict)
++#    else:
++#      device = OPTIONS.override_device
++#    script.AssertDevice(device)
++#  else:
++#    if not oem_dicts:
++#      raise common.ExternalError(
++#          "No OEM file provided to answer expected assertions")
++#    for prop in oem_props.split():
++#      values = []
++#      for oem_dict in oem_dicts:
++#        if oem_dict.get(prop):
++#          values.append(oem_dict[prop])
++#      if not values:
++#        raise common.ExternalError(
++#            "The OEM file is missing the property %s" % prop)
++#      script.AssertOemProperty(prop, values)
+ 
+ 
+ def _LoadOemDicts(script, recovery_mount_options=None):
+@@ -430,7 +430,7 @@ def WriteFullOTAPackage(input_zip, output_zip):
+   #ts_text = GetBuildProp("ro.build.date", OPTIONS.info_dict)
+   #script.AssertOlderBuild(ts, ts_text)
+ 
+-  AppendAssertions(script, OPTIONS.info_dict, oem_dicts)
++  #AppendAssertions(script, OPTIONS.info_dict, oem_dicts)
+   device_specific.FullOTA_Assertions()
+ 
+   # Two-step package strategy (in chronological order, which is *not*
+@@ -732,7 +732,7 @@ def WriteBlockIncrementalOTAPackage(target_zip, source_zip, output_zip):
+   else:
+     vendor_diff = None
+ 
+-  AppendAssertions(script, OPTIONS.target_info_dict, oem_dicts)
++  #AppendAssertions(script, OPTIONS.target_info_dict, oem_dicts)
+   device_specific.IncrementalOTA_Assertions()
+ 
+   # Two-step incremental package strategy (in chronological order,
+@@ -967,7 +967,7 @@ def WriteVerifyPackage(input_zip, output_zip):
+       metadata=metadata,
+       info_dict=OPTIONS.info_dict)
+ 
+-  AppendAssertions(script, OPTIONS.info_dict, oem_dicts)
++  #AppendAssertions(script, OPTIONS.info_dict, oem_dicts)
+ 
+   script.Print("Verifying device images against %s..." % target_fp)
+   script.AppendExtra("")
+-- 
+2.25.1
+
