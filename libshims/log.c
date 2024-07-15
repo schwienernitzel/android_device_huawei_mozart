@@ -14,10 +14,12 @@
  * limitations under the License.
  */
 
-int __android_logPower_print() {
-    return 0;
+int __android_logPower_print(int val)
+{
+    return val;
 }
 
-int __android_janklog_print() {
-    return 0;
+int __android_log_exception_write(int val)
+{
+    return val;
 }

@@ -175,7 +175,7 @@ TARGET_SCREEN_WIDTH := 1200
 PRODUCT_PACKAGES += \
     libshim_icu \
     libshim_gui \
-    libshim_print
+    libshim_log
 
 # Treble
 PRODUCT_PACKAGES += \

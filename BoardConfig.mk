@@ -129,7 +129,7 @@ BOARD_SEPOLICY_DIRS += \
 	device/huawei/mozart/sepolicy
 
 # Shims
-TARGET_LD_SHIM_LIBS := /system/lib/hw/audio.primary.hi3635.so|libshim_icu.so:/system/lib/libFNVfbEngineLib.so|libshim_gui.so
+TARGET_LD_SHIM_LIBS := /system/lib/libcutils.so|libshim_log.so:/system/lib64/libcutils.so|libshim_log.so:/system/lib/hw/audio.primary.hi3635.so|libshim_icu.so:/system/lib/libFNVfbEngineLib.so|libshim_gui.so
 
 # Wi-Fi
 TARGET_USES_64_BIT_BCMDHD	 := true
