@@ -940,11 +940,6 @@ service HwCamCfgSvr /system/bin/HwCamCfgSvr hi3635 GRACE
     group audio camera inet net_bt net_bt_admin net_bw_acct wakelock system
     disabled
 
-service thermal-daemon /system/bin/thermal-daemon
-    class main
-    user system 
-    group system
-
 service hw_charger /sbin/hw_healthd -c
     class charger
     user root
