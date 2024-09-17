@@ -15,5 +15,6 @@
  */
 
 #define PATH_WHITELIST_EXTRA_H \
+    "/sys/firmware/devicetree/base/hisi,boardname", \
     "/system/bin/logcat", \
     "/cache/logcat.txt",
