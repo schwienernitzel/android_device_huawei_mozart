@@ -39,3 +39,10 @@ LOCAL_SHARED_LIBRARIES := libcamera_client
 LOCAL_MODULE := libshim_camera
 LOCAL_MODULE_TAGS := optional
 include $(BUILD_SHARED_LIBRARY)
+
+include $(CLEAR_VARS)
+LOCAL_SRC_FILES := algo.cpp
+LOCAL_SHARED_LIBRARIES := libgui
+LOCAL_MODULE := libshim_algo
+LOCAL_MODULE_TAGS := optional
+include $(BUILD_SHARED_LIBRARY)
