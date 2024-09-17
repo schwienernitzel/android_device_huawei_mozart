@@ -134,6 +134,9 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.software.app_widgets.xml:system/etc/permissions/android.software.app_widgets.xml \
     frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml
 
+PRODUCT_COPY_FILES += \
+    $(DEVICE_PATH)/permissions/android.hardware.huawei.xml:system/etc/permissions/android.hardware.huawei.xml
+
 # Power
 PRODUCT_PACKAGES += \
     power.hi3635
