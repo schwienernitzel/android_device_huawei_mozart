@@ -1,0 +1,25 @@
+From 89687b69968aa5ce8bd47721bc2f48693f928a93 Mon Sep 17 00:00:00 2001
+From: schwienernitzel <pfelix0803@gmail.com>
+Date: Wed, 18 Sep 2024 00:19:27 +0000
+Subject: [PATCH] Do not build camera2
+
+Change-Id: I41b8345a106a49cae2c6d823ac6e824517018321
+---
+ target/product/generic_no_telephony.mk | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/target/product/generic_no_telephony.mk b/target/product/generic_no_telephony.mk
+index 6c23fbb..a652f85 100644
+--- a/target/product/generic_no_telephony.mk
++++ b/target/product/generic_no_telephony.mk
+@@ -20,7 +20,6 @@
+ PRODUCT_PACKAGES := \
+     Bluetooth \
+     BluetoothMidiService \
+-    Camera2 \
+     Gallery2 \
+     Music \
+     MusicFX \
+-- 
+2.25.1
+
