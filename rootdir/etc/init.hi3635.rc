@@ -301,6 +301,10 @@ on init
     chmod 0664 /dev/cpuset/top-app/tasks
     chmod 0664 /dev/cpuset/tasks
 
+    chown system system /sys/class/camerafs/node/thermal_meter0
+    chown system system /sys/class/camerafs/node/thermal_meter1
+    chown system system /sys/class/camerafs/node/thermal_meter2
+
 on early-fs
     wait /dev/block/platform/hi_mci.0/by-name/oeminfo
     start oeminfo_nvm
@@ -423,13 +427,15 @@ on post-fs-data
 
     mkdir /data/media 0770 media_rw media_rw
 
-    mkdir /data/camera 0770 system camera
-    write  data/camera/hisi_sensor0  0
-    write  data/camera/hisi_sensor1  0
-    chown media audio /data/camera/hisi_sensor0
-    chown media audio /data/camera/hisi_sensor1
+    setprop camera.dis.flag 2
+    setprop camera.tnr.flag 1
+    mkdir /data/camera
+    chown system camera /data/camera
+    chmod 770 /data/camera
     chmod 664 /data/camera/hisi_sensor0
     chmod 664 /data/camera/hisi_sensor1
+    mkdir /data/img
+    chown system camera /data/img
 
     mkdir /data/hisi_logs 0774 root system
     mkdir /data/hisi_logs/hifi_log 0774 root system
@@ -680,16 +686,17 @@ on boot
     chown system system /sys/class/leds/torch_front/flash_thermal_protect
     chmod 664 /sys/class/leds/torch_front/flash_thermal_protect
 
+    chown system system /sys/class/camerafs/node/cam_number
+    chmod 664 /sys/class/camerafs/node/cam_number
     chown system system /sys/class/camerafs/node/dual_leds
     chmod 664 /sys/class/camerafs/node/dual_leds
-    chown system system /sys/class/camerafs/node/cam_number
-    chmod 666 /sys/class/camerafs/node/cam_number
     chown system system /sys/class/camerafs/node/lightness
     chmod 664 /sys/class/camerafs/node/lightness
     chown system system /sys/class/camerafs/node/front_dual_leds
     chmod 664 /sys/class/camerafs/node/dual_leds
     chown system system /sys/class/camerafs/node/front_lightness
     chmod 664 /sys/class/camerafs/node/lightness
+
     chown system system /sys/bus/platform/drivers/huawei,altek6045/ois_pixel
     chmod 664 /sys/bus/platform/drivers/huawei,altek6045/ois_pixel
     chown system system /sys/bus/platform/drivers/huawei,altek6045/test_ois
@@ -933,6 +940,8 @@ on boot
     chown root system /sys/devices/system/cpu/cpu0/cpufreq/msg_policy
     chmod 0660 /sys/devices/system/cpu/cpu0/cpufreq/msg_policy
 
+    setprop persist.camera.HAL3.enabled 1
+   
 on charger
     chown system system /sys/class/android_usb/android0/switch_request
     chmod 0664 /sys/class/android_usb/android0/switch_request
@@ -944,6 +953,7 @@ service HwCamCfgSvr /system/bin/HwCamCfgSvr hi3635 MOZART
     class main
     user media
     group audio camera inet net_bt net_bt_admin net_bw_acct wakelock system
+    writepid /dev/cpuset/system-background/tasks /dev/stune/system-background/tasks
 
 service thermal-daemon /system/bin/thermal-daemon
     class main
