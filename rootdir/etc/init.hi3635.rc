@@ -687,7 +687,7 @@ on boot
     chmod 664 /sys/class/leds/torch_front/flash_thermal_protect
 
     chown system system /sys/class/camerafs/node/cam_number
-    chmod 664 /sys/class/camerafs/node/cam_number
+    chmod 666 /sys/class/camerafs/node/cam_number
     chown system system /sys/class/camerafs/node/dual_leds
     chmod 664 /sys/class/camerafs/node/dual_leds
     chown system system /sys/class/camerafs/node/lightness
