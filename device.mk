@@ -146,6 +146,10 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     ro.enable_boot_charger_mode=0 \
     persist.sys.usb.config=adb,mtp
 
+PRODUCT_PROPERTY_OVERRIDES += \
+    media.stagefright.legacyencoder=true \
+    media.stagefright.less-secure=true
+
 # Ramdisk
 PRODUCT_PACKAGES += \
     fstab.hi3635 \

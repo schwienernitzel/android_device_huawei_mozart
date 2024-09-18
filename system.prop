@@ -12,6 +12,35 @@ ro.am.reschedule_service=true
 # Bluetooth
 ro.bt.bdaddr_path=/data/misc/bluedroid/macbt
 
+# Camera
+media.stagefright.legacyencoder=true 
+media.stagefright.less-secure=true 
+ro.config.camera_target_track=true
+ro.config.hw_auto_scene=true
+ro.config.hw_burst_snapshot=true
+ro.config.hw_camera_bestShot=true
+ro.config.hw_camera_refocus=true
+ro.config.hw_manual_focus=true
+ro.config.hw_camera_blureffect=false
+ro.config.hw_camera_davinci=true
+ro.config.hw_camera_docbeauty=true
+ro.config.hw_camera_hdr=true
+ro.config.hw_camera_makeup=true
+ro.config.speed_control_enable=true
+ro.config.widevine_level3=true
+ro.config.hw_camera_mfd=true
+ro.config.hw_camera_nicefood=true
+ro.config.hw_camera_omron=true
+ro.config.hw_camera_refocus=true
+ro.config.hw_camera_smartae=true
+ro.config.hw_camera_zsl=true
+ro.config.hw_manual_focus=true
+ro.config.hw_photo_beauty=true
+ro.config.hw_video_beauty=true
+ro.config.small.previewpos=left
+ro.hwcamera.effectsdiscameraId=true
+ro.hwcamera.previeweffects=true
+
 # CPU
 ro.hardware.alter=Hisilicon Kirin 930
 
