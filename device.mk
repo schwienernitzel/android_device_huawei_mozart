@@ -213,8 +213,4 @@ PRODUCT_PACKAGES += \
     android.hardware.broadcastradio@1.0-impl \
     android.hardware.tetheroffload.config@1.0
 
-# VNDK
-PRODUCT_PACKAGES += \
-    vndk-sp
-
 $(call inherit-product, frameworks/native/build/phone-xxhdpi-3072-dalvik-heap.mk)
