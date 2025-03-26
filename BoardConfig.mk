@@ -87,5 +87,8 @@ BOARD_VENDOR_PLATFORM := hi3635
 # Properties
 TARGET_SYSTEM_PROP := $(DEVICE_PATH)/configs/props/system.prop
 
+# SELinux
+BOARD_PLAT_PRIVATE_SEPOLICY_DIR += $(DEVICE_PATH)/sepolicy
+
 # Vintf
 DEVICE_MANIFEST_FILE := $(DEVICE_PATH)/vintf/manifest.xml
