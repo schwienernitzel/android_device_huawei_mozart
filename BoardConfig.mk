@@ -1,0 +1,55 @@
+#
+# Copyright (C) 2025 The LineageOS Project
+#
+# SPDX-License-Identifier: Apache-2.0
+#
+
+DEVICE_PATH := device/huawei/mozart
+
+# Architecture
+TARGET_ARCH := arm64
+TARGET_ARCH_VARIANT := armv8-a
+TARGET_CPU_ABI := arm64-v8a
+TARGET_CPU_VARIANT := cortex-a53
+
+TARGET_2ND_ARCH := arm
+TARGET_2ND_ARCH_VARIANT := armv8-a
+TARGET_2ND_CPU_ABI := armeabi-v7a
+TARGET_2ND_CPU_ABI2 := armeabi
+TARGET_2ND_CPU_VARIANT := cortex-a53
+
+# Assert
+TARGET_OTA_ASSERT_DEVICE := hi3635,mozart
+
+# Binder
+TARGET_USES_64_BIT_BINDER := true
+
+# Bootloader
+TARGET_BOOTLOADER_BOARD_NAME := hi3635
+TARGET_NO_BOOTLOADER := true
+TARGET_NO_RADIOIMAGE := true
+
+# Dexpreopt
+ifeq ($(HOST_OS),linux)
+  ifneq ($(TARGET_BUILD_VARIANT),eng)
+    ifeq ($(WITH_DEXPREOPT),)
+      WITH_DEXPREOPT := true
+      WITH_DEXPREOPT_BOOT_IMG_AND_SYSTEM_SERVER_ONLY := true
+    endif
+  endif
+endif
+
+# Display
+NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
+SF_START_GRAPHICS_ALLOCATOR_SERVICE := true
+TARGET_USES_ION := true
+TARGET_USE_PAN_DISPLAY := true
+
+# Filesystem
+BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
+TARGET_EXFAT_DRIVER := exfat
+TARGET_USERIMAGES_USE_EXT4 := true
+
+# Platform
+TARGET_BOARD_PLATFORM := hi3635
+BOARD_VENDOR_PLATFORM := hi3635
