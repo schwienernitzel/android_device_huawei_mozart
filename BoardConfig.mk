@@ -86,3 +86,6 @@ BOARD_VENDOR_PLATFORM := hi3635
 
 # Properties
 TARGET_SYSTEM_PROP := $(DEVICE_PATH)/configs/props/system.prop
+
+# Vintf
+DEVICE_MANIFEST_FILE := $(DEVICE_PATH)/vintf/manifest.xml
