@@ -10,6 +10,24 @@ DEVICE_PATH := device/huawei/mozart
 PRODUCT_AAPT_CONFIG := normal
 PRODUCT_AAPT_PREF_CONFIG := xxhdpi
 
+# Audio
+PRODUCT_COPY_FILES += \
+    $(DEVICE_PATH)/audio/audio_policy.conf:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy.conf \
+    $(DEVICE_PATH)/audio/audio_effects.conf:$(TARGET_COPY_OUT_VENDOR)/etc/audio_effects.conf
+
+PRODUCT_PACKAGES += \
+    audio.primary.default \
+    audio.a2dp.default \
+    audio.usb.default \
+    audio.r_submix.default \
+    libaudioutils \
+    libaudioroute \
+    libtinyalsa \
+    tinyplay \
+    tinycap \
+    tinymix \
+    tinypcminfo
+
 # Media
 PRODUCT_COPY_FILES += \
     $(DEVICE_PATH)/configs/media/media_codecs.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs.xml \

@@ -21,6 +21,9 @@ TARGET_2ND_CPU_VARIANT := cortex-a53
 # Assert
 TARGET_OTA_ASSERT_DEVICE := hi3635,mozart
 
+# Audio
+BOARD_USES_ALSA_AUDIO := true
+
 # Binder
 TARGET_USES_64_BIT_BINDER := true
 
