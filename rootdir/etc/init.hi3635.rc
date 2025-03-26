@@ -986,20 +986,7 @@ on charger
     chown system system /sys/class/android_usb/android0/switch_request
     chmod 0664 /sys/class/android_usb/android0/switch_request
 
-
 # Start services
-
-service HwCamCfgSvr /system/bin/HwCamCfgSvr hi3635 GRACE
-    class main
-    user media
-    group audio camera inet net_bt net_bt_admin net_bw_acct wakelock system
-    disabled
-
-service thermal-daemon /system/bin/thermal-daemon
-    class main
-    user system 
-    group system
-
 service oeminfo_nvm /sbin/oeminfo_nvm_server
     class core
     critical 
