@@ -87,6 +87,9 @@ BOARD_VENDOR_PLATFORM := hi3635
 # Properties
 TARGET_SYSTEM_PROP := $(DEVICE_PATH)/configs/props/system.prop
 
+# Recovery
+TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/fstab.hi3635
+
 # SELinux
 BOARD_PLAT_PRIVATE_SEPOLICY_DIR += $(DEVICE_PATH)/sepolicy
 
