@@ -42,7 +42,8 @@
 	  <value>10.0</value>
 	  <value>10.0</value>
   </array>
-  <array name="cpu.speeds">
+  <item name="cpu.clusters.cores">8</item>
+  <array name="cpu.core_speeds.cluster0">
     <value>403200</value> <!-- 400 MHz CPU speed -->
     <value>604800</value> <!-- 600 MHz CPU speed -->
     <value>806400</value> <!-- 800 MHz CPU speed -->
@@ -55,14 +56,13 @@
     <value>1708800</value><!-- 1.7 GHz CPU speed -->
     <value>1804800</value><!-- 1.8 GHz CPU speed -->
     <value>2016000</value><!-- 2.1 GHz CPU speed -->
-    
   </array>
   <!-- Power consumption in suspend -->
-  <item name="cpu.idle">3</item> <!-- k3v3 -->
+  <item name="cpu.suspend">4</item> <!-- k3v5 -->
   <!-- Power consumption due to wake lock held -->
   <item name="cpu.awake">40.2</item> <!-- k3v3 -->
   <!-- Power consumption at different speeds -->
-  <array name="cpu.active">
+  <array name="cpu.core_power.cluster0">
       <value>105</value>
       <value>190</value>
       <value>280</value>
@@ -74,8 +74,7 @@
       <value>995</value>
       <value>1105</value>
       <value>1335</value>
-      <value>1655</value>
-      
+      <value>1655</value>    
   </array>
 </device>
 <!-- DTS2014072901830 zwx216556 end-->
