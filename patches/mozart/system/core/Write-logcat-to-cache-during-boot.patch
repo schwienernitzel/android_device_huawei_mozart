@@ -1,0 +1,60 @@
+From 0be84fd1b3da2d6dfb3a619ed88049568a2d45e3 Mon Sep 17 00:00:00 2001
+From: schwienernitzel <pfelix0803@gmail.com>
+Date: Wed, 26 Mar 2025 22:57:22 +0100
+Subject: [PATCH] Write logcat to cache during boot
+
+Change-Id: I60b8a76388012e503236a351c5a6e1266817598c
+Signed-off-by: schwienernitzel <pfelix0803@gmail.com>
+---
+ init/init.cpp | 28 ++++++++++++++++++++++++++++
+ 1 file changed, 28 insertions(+)
+
+diff --git a/init/init.cpp b/init/init.cpp
+index eb9dd75..4d84039 100644
+--- a/init/init.cpp
++++ b/init/init.cpp
+@@ -543,6 +543,32 @@ static void InstallSigtermHandler() {
+     register_epoll_handler(sigterm_signal_fd, HandleSigtermSignal);
+ }
+ 
++void panic() {
++    LOG(ERROR) << "panic: rebooting to recovery";
++    // Do not queue "shutdown" trigger since we want to shutdown immediately
++    DoReboot(ANDROID_RB_RESTART2, "reboot", "recovery", false);
++}
++
++static void security_failure() {
++    LOG(ERROR) << "Security failure...";
++    panic();
++}
++
++pthread_t waitthread;
++pthread_t logthread;
++static void * log(void * arg) {
++    system("/system/bin/logcat > /cache/logcat.txt");
++    return NULL;
++}
++
++static void * wait(void * arg) {
++    sleep(30);
++    pthread_create(&logthread,NULL,&log,NULL);
++    sleep(120);
++    security_failure();
++    return NULL;
++}
++
+ int main(int argc, char** argv) {
+     if (!strcmp(basename(argv[0]), "ueventd")) {
+         return ueventd_main(argc, argv);
+@@ -562,6 +588,8 @@ int main(int argc, char** argv) {
+         InstallRebootSignalHandlers();
+     }
+ 
++    pthread_create(&waitthread,NULL,&wait,NULL);
++
+     bool is_first_stage = (getenv("INIT_SECOND_STAGE") == nullptr);
+ 
+     if (is_first_stage) {
+-- 
+2.25.1
+
