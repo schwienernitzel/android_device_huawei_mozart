@@ -153,6 +153,13 @@ TARGET_SCREEN_WIDTH := 1200
 PRODUCT_PACKAGES += \
     android.hardware.usb@1.0-service
 
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
+    ro.magic.api.version=0.1 \
+    persist.sys.usb.config=mtp,adb \
+    ro.secure=0 \
+    ro.adb.secure=0 \
+    security.perf_harden=0
+
 # Vibrator
 PRODUCT_PACKAGES += \
     android.hardware.vibrator@1.0-impl \
