@@ -1,0 +1,35 @@
+From a3191aaba6fe4166b8deb6c72e9aea7267bf873a Mon Sep 17 00:00:00 2001
+From: schwienernitzel <pfelix0803@gmail.com>
+Date: Wed, 26 Mar 2025 18:18:38 +0100
+Subject: [PATCH] Support mkbootimg 0xffb88000 as tags_offset
+
+Change-Id: I45ab1ef44458ef18ca112eac9436b499bfc87f16
+Signed-off-by: schwienernitzel <pfelix0803@gmail.com>
+---
+ mkbootimg/mkbootimg | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/mkbootimg/mkbootimg b/mkbootimg/mkbootimg
+index 031320d..2302158 100755
+--- a/mkbootimg/mkbootimg
++++ b/mkbootimg/mkbootimg
+@@ -19,6 +19,7 @@ from argparse import ArgumentParser, FileType, Action
+ from os import fstat
+ from struct import pack
+ from hashlib import sha1
++import ctypes
+ import sys
+ import re
+ 
+@@ -71,7 +72,7 @@ def write_header(args):
+         args.base + args.ramdisk_offset,                # physical load addr
+         filesize(args.second),                          # size in bytes
+         args.base + args.second_offset,                 # physical load addr
+-        args.base + args.tags_offset,                   # physical addr for kernel tags
++        ctypes.c_uint32(args.base + args.tags_offset).value, # physical addr for kernel tags
+         args.pagesize,                                  # flash page size we assume
+         max(args.header_version, filesize(args.dt)),    # version of bootimage header or dt size in bytes
+         (args.os_version << 11) | args.os_patch_level)) # os version and patch level
+-- 
+2.25.1
+

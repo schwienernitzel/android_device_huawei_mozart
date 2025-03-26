@@ -1,0 +1,85 @@
+From 11ae5d76e3d6be4a3ce15114d125c496e07d715a Mon Sep 17 00:00:00 2001
+From: schwienernitzel <pfelix0803@gmail.com>
+Date: Wed, 26 Mar 2025 18:24:36 +0100
+Subject: [PATCH] Do not check device assert signature
+
+Change-Id: Ie7a2073428a7641e3e7cf348adf435f185de4a2c
+Signed-off-by: schwienernitzel <pfelix0803@gmail.com>
+---
+ tools/releasetools/edify_generator.py       | 10 ---------
+ tools/releasetools/ota_from_target_files.py | 24 ---------------------
+ 2 files changed, 34 deletions(-)
+
+diff --git a/tools/releasetools/edify_generator.py b/tools/releasetools/edify_generator.py
+index c936343..7533ab9 100644
+--- a/tools/releasetools/edify_generator.py
++++ b/tools/releasetools/edify_generator.py
+@@ -143,16 +143,6 @@ class EdifyGenerator(object):
+          'build (" + getprop("ro.build.date") + ").");') % (timestamp,
+              common.ErrorCode.OLDER_BUILD, timestamp_text))
+ 
+-  def AssertDevice(self, device):
+-    """Assert that the device identifier is the given string."""
+-    cmd = ('assert(' +
+-           ' || \0'.join(['getprop("ro.product.device") == "%s" || getprop("ro.build.product") == "%s"'
+-                         % (i, i) for i in device.split(",")]) +
+-           ' || abort("E%d: This package is for device: %s; ' +
+-           'this device is " + getprop("ro.product.device") + ".");' +
+-           ');') % (common.ErrorCode.DEVICE_MISMATCH, device)
+-    self.script.append(self.WordWrap(cmd))
+-
+   def AssertSomeBootloader(self, *bootloaders):
+     """Assert that the bootloader version is one of *bootloaders."""
+     cmd = ("assert(" +
+diff --git a/tools/releasetools/ota_from_target_files.py b/tools/releasetools/ota_from_target_files.py
+index be0e798..5abbd64 100755
+--- a/tools/releasetools/ota_from_target_files.py
++++ b/tools/releasetools/ota_from_target_files.py
+@@ -334,28 +334,6 @@ class BuildInfo(object):
+     recovery_mount_options = self.info_dict.get("recovery_mount_options")
+     script.Mount("/oem", recovery_mount_options)
+ 
+-  def WriteDeviceAssertions(self, script, oem_no_mount):
+-    # Read the property directly if not using OEM properties.
+-    if not self.oem_props:
+-      script.AssertDevice(self.device)
+-      return
+-
+-    # Otherwise assert OEM properties.
+-    if not self.oem_dicts:
+-      raise common.ExternalError(
+-          "No OEM file provided to answer expected assertions")
+-
+-    for prop in self.oem_props.split():
+-      values = []
+-      for oem_dict in self.oem_dicts:
+-        if prop in oem_dict:
+-          values.append(oem_dict[prop])
+-      if not values:
+-        raise common.ExternalError(
+-            "The OEM file is missing the property %s" % (prop,))
+-      script.AssertOemProperty(prop, values, oem_no_mount)
+-
+-
+ class PayloadSigner(object):
+   """A class that wraps the payload signing works.
+ 
+@@ -768,7 +746,6 @@ def WriteFullOTAPackage(input_zip, output_file):
+   #ts_text = target_info.GetBuildProp("ro.build.date")
+   #script.AssertOlderBuild(ts, ts_text)
+ 
+-  target_info.WriteDeviceAssertions(script, OPTIONS.oem_no_mount)
+   device_specific.FullOTA_Assertions()
+ 
+   # Two-step package strategy (in chronological order, which is *not*
+@@ -1464,7 +1441,6 @@ def WriteBlockIncrementalOTAPackage(target_zip, source_zip, output_file):
+       target_zip, output_zip, target_info, source_info)
+ 
+   # Assertions (e.g. device properties check).
+-  target_info.WriteDeviceAssertions(script, OPTIONS.oem_no_mount)
+   device_specific.IncrementalOTA_Assertions()
+ 
+   # Two-step incremental package strategy (in chronological order,
+-- 
+2.25.1
+
