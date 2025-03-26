@@ -42,6 +42,11 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.configstore@1.0-service
 
+# Dlopener
+PRODUCT_PACKAGES += \
+    dlopen32 \
+    dlopen64
+
 # DRM
 PRODUCT_PACKAGES += \
     android.hardware.drm@1.0-impl \
