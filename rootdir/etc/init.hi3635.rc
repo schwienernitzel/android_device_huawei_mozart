@@ -156,10 +156,6 @@ on init
     chown system system /sys/kernel/perfhub/cpuaffinity
     chmod 0660 /sys/kernel/perfhub/cpuaffinity
 
-    chmod 0664 /sys/devices/platform/huawei_touch/easy_wakeup_gesture
-    chmod 0664 /sys/devices/platform/huawei_touch/touch_glove
-    chmod 0664 /sys/devices/platform/huawei_touch/wakeup_gesture_enable
-
     chown system system /dev/cpuset/foreground/cpus
     chmod 0664 /dev/cpuset/foreground/cpus
     chown system system /dev/cpuset/foreground/boost/cpus
@@ -628,12 +624,6 @@ on boot
     chown system system /sys/touchscreen/hw_irq_stat
     chown system system /sys/touchscreen/drv_debug
     chown system system /sys/touchscreen/sleep_status
-    chown system system /sys/touchscreen/wakeup_gesture_enable
-    chown system system /sys/touchscreen/easy_wakeup_gesture
-    chown system system /sys/touchscreen/easy_wakeup_control
-    chown system system /sys/touchscreen/easy_wakeup_position
-    chown system system /sys/touchscreen/easy_wakeup_supported_gestures
-    chown system system /sys/touchscreen/touch_glove
     chown system system /dev/ist510e_debug 
     chown system system /sys/touchscreen/touch_window
     chown system system /sys/touchscreen/touch_sensitivity
