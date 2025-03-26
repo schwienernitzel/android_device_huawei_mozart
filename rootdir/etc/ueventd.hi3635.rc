@@ -53,8 +53,6 @@
 /dev/hifi_misc                                  0660  root      audio
 /dev/tspdrv               			0660   system       system
 
-/dev/pn544                			0660   nfc        nfc
-
 /dev/imgsysbrg_vdec0				660 system camera
 /dev/jpu					660 media camera
 /dev/k3vpp0					660 media media

@@ -36,11 +36,6 @@ on early-init
     write /sys/block/mmcblk0/queue/nr_requests 256
 
 on init
-
-    # NFC
-    symlink /dev/pn544 /dev/pn54x
-    symlink /dev/pn544 /dev/pn547
-
     mkdir /cust
     mkdir /splash2
     mkdir /3rdmodem
@@ -410,8 +405,6 @@ on post-fs
     chmod 0440 /dev/log/radio_boot
 
 on post-fs-data
-    mkdir /data/nfc 0755 nfc nfc
-
     mkdir /data/offlinelogs 770
 
     mkdir /data/nvram/ 0770 root nvram
@@ -589,37 +582,6 @@ on boot
     chown system system /sys/devices/platform/antennafpga.0/ice40bin_scan_fpga_table
 
     write /sys/kernel/debug/kmemleak scan=14400
-
-    chown nfc nfc /sys/bus/i2c/devices/0-0028/nfc_fwupdate
-    chmod 0664 /sys/bus/i2c/devices/0-0028/nfc_fwupdate
-    chown nfc nfc /sys/bus/i2c/devices/0-0028/nxp_config_name
-    chmod 0664 /sys/bus/i2c/devices/0-0028/nxp_config_name
-    chown nfc nfc /sys/bus/i2c/devices/0-0028/nfc_brcm_conf_name
-    chmod 0664 /sys/bus/i2c/devices/0-0028/nfc_brcm_conf_name
-    chown nfc nfc /sys/bus/i2c/devices/0-0028/nfc_sim_switch
-    chmod 0664 /sys/bus/i2c/devices/0-0028/nfc_sim_switch
-    chown nfc nfc /sys/bus/i2c/devices/0-0028/nfc_sim_status
-    chmod 0444 /sys/bus/i2c/devices/0-0028/nfc_sim_status
-    chown nfc nfc /sys/bus/i2c/devices/0-0028/rd_nfc_sim_status
-    chmod 0444 /sys/bus/i2c/devices/0-0028/rd_nfc_sim_status
-    chown nfc nfc /sys/bus/i2c/devices/0-0028/nfc_enable_status
-    chown nfc nfc /sys/bus/i2c/devices/0-0028/nfc_card_num
-    chmod 0664 /sys/bus/i2c/devices/0-0028/nfc_card_num
-    chown nfc nfc /sys/bus/i2c/devices/0-0028/nfc_chip_type
-    chmod 0664 /sys/bus/i2c/devices/0-0028/nfc_chip_type
-    chown nfc nfc /sys/bus/i2c/devices/0-0028/nfc_fw_version
-    chmod 0664 /sys/bus/i2c/devices/0-0028/nfc_fw_version
-    chmod 0664 /sys/bus/i2c/devices/0-0028/nfc_enable_status
-    chown nfc nfc /sys/bus/i2c/devices/0-0028/nfcservice_lock
-    chmod 0664 /sys/bus/i2c/devices/0-0028/nfcservice_lock
-    chown nfc nfc /sys/bus/i2c/devices/0-0028/nfc_svdd_sw
-    chmod 0664 /sys/bus/i2c/devices/0-0028/nfc_svdd_sw
-    chown nfc nfc /sys/bus/i2c/devices/0-0028/nfc_close_type
-    chmod 0664 /sys/bus/i2c/devices/0-0028/nfc_close_type
-    chown nfc nfc /sys/bus/i2c/devices/0-0028/nfc_single_channel
-    chmod 0664 /sys/bus/i2c/devices/0-0028/nfc_single_channel
-    chown nfc nfc /sys/bus/i2c/devices/0-0028/conf_for_factory
-    chmod 0444 /sys/bus/i2c/devices/0-0028/conf_for_factory
 
     chown system system /sys/class/leds/lcd_backlight0/brightness
     chmod 644 /sys/class/leds/lcd_backlight0/brightness
