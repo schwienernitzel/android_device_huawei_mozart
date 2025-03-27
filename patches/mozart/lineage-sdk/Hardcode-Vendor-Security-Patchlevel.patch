@@ -1,0 +1,54 @@
+From 799b99016580568da47d777ab96280ff37a1dbf6 Mon Sep 17 00:00:00 2001
+From: schwienernitzel <pfelix0803@gmail.com>
+Date: Thu, 27 Mar 2025 09:05:49 +0100
+Subject: [PATCH] Hardcode Vendor Security Patchlevel
+
+Change-Id: I28912548b30d9e27fa6c92a61ba82a7e57934e85
+Signed-off-by: schwienernitzel <pfelix0803@gmail.com>
+---
+ .../LineageVendorSecurityPatchTextView.java   | 27 +++++++------------
+ 1 file changed, 9 insertions(+), 18 deletions(-)
+
+diff --git a/sdk/src/java/org/lineageos/internal/preference/deviceinfo/LineageVendorSecurityPatchTextView.java b/sdk/src/java/org/lineageos/internal/preference/deviceinfo/LineageVendorSecurityPatchTextView.java
+index 3f0521a..8cf30ba 100644
+--- a/sdk/src/java/org/lineageos/internal/preference/deviceinfo/LineageVendorSecurityPatchTextView.java
++++ b/sdk/src/java/org/lineageos/internal/preference/deviceinfo/LineageVendorSecurityPatchTextView.java
+@@ -45,26 +45,17 @@ public class LineageVendorSecurityPatchTextView extends TextView {
+     }
+ 
+     private String getVendorSecurityPatchLevel() {
+-        String patchLevel = SystemProperties.get(KEY_AOSP_VENDOR_SECURITY_PATCH);
+-
+-        if (patchLevel.isEmpty()) {
+-            patchLevel = SystemProperties.get(KEY_LINEAGE_VENDOR_SECURITY_PATCH);
+-        }
+-
+-        if (!patchLevel.isEmpty()) {
+-            try {
+-                SimpleDateFormat template = new SimpleDateFormat("yyyy-MM-dd");
+-                Date patchLevelDate = template.parse(patchLevel);
+-                String format = DateFormat.getBestDateTimePattern(Locale.getDefault(), "dMMMMyyyy");
+-                patchLevel = DateFormat.format(format, patchLevelDate).toString();
+-            } catch (ParseException e) {
+-                // parsing failed, use raw string
+-            }
+-        } else {
+-            patchLevel = getContext().getResources().getString(R.string.unknown);
++        String patchLevel = "2016-10-01"; // From B202(C232)
++
++        try {
++            SimpleDateFormat template = new SimpleDateFormat("yyyy-MM-dd");
++            Date patchLevelDate = template.parse(patchLevel);
++            String format = DateFormat.getBestDateTimePattern(Locale.getDefault(), "dMMMMyyyy");
++            patchLevel = DateFormat.format(format, patchLevelDate).toString();
++        } catch (ParseException e) {
++           // parsing failed, use raw string
+         }
+ 
+         return patchLevel;
+     }
+-
+ }
+-- 
+2.25.1
+
