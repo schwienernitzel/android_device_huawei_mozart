@@ -151,6 +151,10 @@ PRODUCT_PACKAGES += \
 TARGET_SCREEN_HEIGHT := 1920
 TARGET_SCREEN_WIDTH := 1200
 
+# Shims
+PRODUCT_PACKAGES += \
+    libicuuc_shim
+
 # USB
 PRODUCT_PACKAGES += \
     android.hardware.usb@1.0-service.basic
