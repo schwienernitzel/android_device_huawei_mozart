@@ -103,7 +103,9 @@ BOARD_PLAT_PRIVATE_SEPOLICY_DIR += $(DEVICE_PATH)/sepolicy
 TARGET_LD_SHIM_LIBS := \
     /system/lib/hw/audio.primary.hi3635.so|libicuuc_shim.so \
     /system/lib64/hw/audio.primary.hi3635.so|libicuuc_shim.so \
-    /system/lib/libhuaweiprocessing.so|libicuuc_shim.so
+    /system/lib/libhuaweiprocessing.so|libicuuc_shim.so \
+    /system/lib/libril.so|libicuuc_shim.so \
+    /system/lib64/libril.so|libicuuc_shim.so
 
 # Vintf
 DEVICE_MANIFEST_FILE := $(DEVICE_PATH)/vintf/manifest.xml
