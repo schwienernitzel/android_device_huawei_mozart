@@ -147,6 +147,13 @@ TARGET_RELEASETOOLS_EXTENSIONS := $(DEVICE_PATH)/releasetools
 PRODUCT_PACKAGES += \
     android.hardware.renderscript@1.0-impl
 
+# RIL
+PRODUCT_PACKAGES += \
+    android.hardware.broadcastradio@1.0-impl \
+    libprotobuf-cpp-full \
+    libtinyxml \
+    libxml2
+
 # Screen
 TARGET_SCREEN_HEIGHT := 1920
 TARGET_SCREEN_WIDTH := 1200
